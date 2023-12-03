@@ -10,8 +10,7 @@ public class Backspace extends Operator{
      */
     @Override
     void execute() {
-        // removes the latest char in the currentValue
-        // eg : 1234 -> 123
-        // 123.4 -> 123. -> 123
+        String currentValue = this.state.getCurrentValue();
+        this.state.setCurrentValue(currentValue.substring(0, currentValue.length() - 1));
     }
 }

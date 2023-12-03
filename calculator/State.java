@@ -13,9 +13,9 @@ public class State {
         return this.currentValue;
     }
 
-    /*public void setCurrentValue(double currentValue) {
+    public void setCurrentValue(String currentValue) {
         this.currentValue = currentValue;
-    }*/
+    }
 
     public void addNumberToCurrentValue(int number){
         if (this.currentValue.equals("0")){
