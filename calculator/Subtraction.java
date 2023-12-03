@@ -7,6 +7,6 @@ public class Subtraction extends Operator{
 
     @Override
     void execute() {
-
+        // subtracts the 2nd item of the stack to the first then add the result on top of the stack
     }
 }
