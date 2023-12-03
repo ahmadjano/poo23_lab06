@@ -90,9 +90,9 @@ public class JCalculator extends JFrame {
         // Boutons 1-9
         for (int i = 1; i < 10; i++)
             addOperatorButton(String.valueOf(i), (i - 1) % 3, 4 - (i - 1) / 3,
-                    Color.BLUE, new Number(state));
+                    Color.BLUE, new Number(state, i));
         // Bouton 0
-        addOperatorButton("0", 0, 5, Color.BLUE, null);
+        addOperatorButton("0", 0, 5, Color.BLUE, new Number(state, 0));
 
         // Changement de signe de la valeur courante
         addOperatorButton("+/-", 1, 5, Color.BLUE, null);
@@ -108,8 +108,8 @@ public class JCalculator extends JFrame {
 
         // Operateurs arithmetiques a un operande: 1/x, x^2, Sqrt
         addOperatorButton("1/x", 4, 2, Color.RED, null);
-        addOperatorButton("x^2", 4, 3, Color.RED, null);
-        addOperatorButton("Sqrt", 4, 4, Color.RED, null);
+        addOperatorButton("x^2", 4, 3, Color.RED, new Power(state));
+        addOperatorButton("Sqrt", 4, 4, Color.RED, new Root(state));
 
         // Entree: met la valeur courante sur le sommet de la pile
         addOperatorButton("Ent", 4, 5, Color.RED, null);

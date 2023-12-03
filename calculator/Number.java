@@ -1,8 +1,10 @@
 package calculator;
 
 public class Number extends Operator{
-    public Number(State state) {
+    int value;
+    public Number(State state, int value) {
         super(state);
+        this.value = value;
     }
 
     @Override
@@ -11,6 +13,7 @@ public class Number extends Operator{
         // exemple : currentValue : 12
         // we add 3 to get currentValue : 123
         // add number to stack when enter pressed
+        double number = this.state.getCurrentValue();
         System.out.println("number");
     }
 }
