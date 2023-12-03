@@ -95,7 +95,7 @@ public class JCalculator extends JFrame {
         addOperatorButton("0", 0, 5, Color.BLUE, new Number(state, 0));
 
         // Changement de signe de la valeur courante
-        addOperatorButton("+/-", 1, 5, Color.BLUE, null);
+        addOperatorButton("+/-", 1, 5, Color.BLUE, new SignSwitch(state));
 
         // Operateur point (chiffres apres la virgule ensuite)
         addOperatorButton(".", 2, 5, Color.BLUE, new Point(state));
