@@ -10,6 +10,6 @@ public class Point extends Operator{
      */
     @Override
     void execute() {
-
+        this.state.addDecimalToCurrentValue();
     }
 }
