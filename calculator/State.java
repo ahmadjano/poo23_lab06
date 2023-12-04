@@ -37,6 +37,10 @@ public class State {
         this.stack.push(currentValue);
     }
 
+    public void pushToStack(String value){
+        this.stack.push(value);
+    }
+
     public String popFromStack(){
         return this.stack.pop();
     }
