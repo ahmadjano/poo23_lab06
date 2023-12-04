@@ -1,12 +1,13 @@
 package calculator;
 
+import util.Stack;
+
 public class State {
     private String currentValue = "0"; // value currently being inputted
 
-    private final Stack<Double> values; // stack of all values
+    private final Stack<String> stack = new Stack<>(); // stack of all values
 
     public State() {
-        this.values = new Stack<Double>();
     }
 
     public String getCurrentValue() {
@@ -22,7 +23,6 @@ public class State {
             this.currentValue = Integer.toString(number);
             return;
         }
-
         this.currentValue += number;
     }
 
@@ -30,9 +30,21 @@ public class State {
         if(this.currentValue.contains(".")){
             return;
         }
-
         this.currentValue += '.';
     }
 
-    // Add more state-related methods as needed
+    public void pushToStack(){
+        this.stack.push(currentValue);
+    }
+
+    public String popFromStack(){
+        return this.stack.pop();
+    }
+
+    public String[] getStack(){
+        if(this.stack.isEmpty()){
+            return new String[] {"< empty stack >"};
+        }
+        return this.stack.toArray(new String[this.stack.size()]);
+    }
 }

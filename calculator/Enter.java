@@ -13,5 +13,7 @@ public class Enter extends Operator {
     void execute() {
         // push the currentValue on top of the stack
         // then set it to 0
+        this.state.pushToStack();
+        this.state.setCurrentValue("0");
     }
 }
