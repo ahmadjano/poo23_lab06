@@ -64,8 +64,12 @@ public class State {
         return this.stack.pop();
     }
 
-    public String[] getStack(){
-        return this.stack.toArray(new String[this.stack.size()]);
+    public Stack<String> getStack() {
+        return stack;
+    }
+
+    public String[] toArray() {
+        return this.stack.toArray(new String[stack.size()]);
     }
 
     public void setStack(Stack<String> stack){
