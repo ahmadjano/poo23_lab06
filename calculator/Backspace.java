@@ -1,12 +1,22 @@
 package calculator;
 
+/**
+ * Backspace class
+ * Used to remove the last character in current value
+ */
 public class Backspace extends Operator{
+
+    /**
+     * Backspace constructor
+     * @param state - State
+     */
     public Backspace(State state) {
         super(state);
     }
 
     /**
-     *
+     * Execute method
+     * Removes the last character from current value
      */
     @Override
     void execute() {

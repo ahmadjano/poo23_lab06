@@ -1,11 +1,21 @@
 package calculator;
 
+/**
+ * SignSwitch class
+ * Switch sign of the currentValue
+ */
 public class SignSwitch extends Operator{
+
+    /**
+     * SignSwitch constructor
+     * @param state - State
+     */
     public SignSwitch(State state) {
         super(state);
     }
 
     /**
+     * Execute method
      * Switches the sign of the current state value.
      */
     @Override

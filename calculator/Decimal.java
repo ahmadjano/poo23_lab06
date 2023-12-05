@@ -1,11 +1,21 @@
 package calculator;
 
-public class Point extends Operator{
-    public Point(State state) {
+/**
+ * Decimal class
+ * add a decimal to currentvalue
+ */
+public class Decimal extends Operator{
+
+    /**
+     * Decimal constructor
+     * @param state - State
+     */
+    public Decimal(State state) {
         super(state);
     }
 
     /**
+     * Execute method
      * Appends a decimal point to the current state.
      */
     @Override

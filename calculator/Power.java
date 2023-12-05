@@ -1,14 +1,24 @@
 package calculator;
 
+/**
+ * Power class
+ */
 public class Power extends Operator{
-    private int exponent;
+    private final int exponent;
+
+    /**
+     * Power constructor
+     * @param state - State
+     * @param exponent - Exponent for the power
+     */
     public Power(State state, int exponent) {
         super(state);
         this.exponent = exponent;
     }
 
     /**
-     *
+     * Execute method
+     * Applies power to the current value
      */
     @Override
     void execute() {

@@ -1,12 +1,21 @@
 package calculator;
 
+/**
+ * SquareRoot class
+ */
 public class SquareRoot extends Operator {
+
+    /**
+     * SquareRoot constructor
+     * @param state - State
+     */
     public SquareRoot(State state) {
         super(state);
     }
 
     /**
-     * Performs a square root operation.
+     * Execute method
+     * Performs a square root operation on the currentValue.
      */
     @Override
     void execute() {
