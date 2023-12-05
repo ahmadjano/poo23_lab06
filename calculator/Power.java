@@ -1,8 +1,10 @@
 package calculator;
 
 public class Power extends Operator{
-    public Power(State state) {
+    private int exponent;
+    public Power(State state, int exponent) {
         super(state);
+        this.exponent = exponent;
     }
 
     /**
@@ -13,5 +15,12 @@ public class Power extends Operator{
         // take the first number of the stack
         // pow(2) of it
         // push it back on top of stack
+        double number = Double.parseDouble(this.state.popFromStack());
+        number = Math.pow(number,this.exponent);
+        String resultString = (int) number - number == 0.0
+                ? Integer.toString((int) number)
+                : Double.toString(number);
+        this.state.pushToStack(resultString);
+
     }
 }

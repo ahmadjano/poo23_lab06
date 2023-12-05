@@ -84,10 +84,10 @@ public class JCalculator extends JFrame {
         addOperatorButton("<=", 2, 1, Color.RED, new Backspace(state));
 
         // Mise a zero de la valeur courante + suppression des erreurs
-        addOperatorButton("CE", 3, 1, Color.RED, null);
+        addOperatorButton("CE", 3, 1, Color.RED, new ClearError(state));
 
         // Comme CE + vide la pile
-        addOperatorButton("C", 4, 1, Color.RED, null);
+        addOperatorButton("C", 4, 1, Color.RED, new Clear(state));
 
         // Boutons 1-9
         for (int i = 1; i < 10; i++)
@@ -110,7 +110,7 @@ public class JCalculator extends JFrame {
 
         // Operateurs arithmetiques a un operande: 1/x, x^2, Sqrt
         addOperatorButton("1/x", 4, 2, Color.RED, new Inverse(state));
-        addOperatorButton("x^2", 4, 3, Color.RED, new Power(state));
+        addOperatorButton("x^2", 4, 3, Color.RED, new Power(state, 2));
         addOperatorButton("Sqrt", 4, 4, Color.RED, new Root(state));
 
         // Entree: met la valeur courante sur le sommet de la pile
