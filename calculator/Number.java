@@ -10,7 +10,7 @@ public class Number extends Operator{
     @Override
     void execute() {
         String strValue = Integer.toString(value);
-        if (this.state.getCurrentValue().equals(State.DEFAULT_VALUE)){
+        if (this.state.isEmpty()){
             this.state.setCurrentValue(strValue);
             return;
         }
