@@ -6,10 +6,13 @@ public class Point extends Operator{
     }
 
     /**
-     *
+     * Appends a decimal point to the current state.
      */
     @Override
     void execute() {
-        this.state.addDecimalToCurrentValue();
+        if(this.state.getCurrentValue().contains(".")){
+            return;
+        }
+        this.state.setCurrentValue(this.state.getCurrentValue() + '.');
     }
 }

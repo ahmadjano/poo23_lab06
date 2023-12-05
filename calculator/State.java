@@ -3,12 +3,11 @@ package calculator;
 import util.Stack;
 
 public class State {
-    private String currentValue = "0"; // value currently being inputted
+    public static final String DEFAULT_VALUE = "0";
+    private static final String[] DEFAULT_STACK = new String[] {"< empty stack >"};
+    private String currentValue = DEFAULT_VALUE; // value currently being inputted
 
     private Stack<String> stack = new Stack<>(); // stack of all values
-
-    public State() {
-    }
 
     public String getCurrentValue() {
         return this.currentValue;
@@ -29,21 +28,6 @@ public class State {
         this.setCurrentValue(resultString);
     }
 
-    public void addNumberToCurrentValue(int number){
-        if (this.currentValue.equals("0")){
-            this.currentValue = Integer.toString(number);
-            return;
-        }
-        this.currentValue += number;
-    }
-
-    public void addDecimalToCurrentValue(){
-        if(this.currentValue.contains(".")){
-            return;
-        }
-        this.currentValue += '.';
-    }
-
     public void pushToStack(){
         this.stack.push(currentValue);
     }
@@ -58,7 +42,7 @@ public class State {
 
     public String[] getStack(){
         if(this.stack.isEmpty()){
-            return new String[] {"< empty stack >"};
+            return DEFAULT_STACK;
         }
         return this.stack.toArray(new String[this.stack.size()]);
     }
