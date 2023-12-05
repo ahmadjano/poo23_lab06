@@ -59,10 +59,6 @@ public class State {
         this.stack = stack;
     }
 
-    public void resetValue() {
-        this.currentValue = DEFAULT_VALUE;
-    }
-
     public boolean isEmpty() {
         return this.currentValue.equals(DEFAULT_VALUE);
     }
