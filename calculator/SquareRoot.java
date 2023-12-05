@@ -1,12 +1,12 @@
 package calculator;
 
-public class Root extends Operator{
-    public Root(State state) {
+public class SquareRoot extends Operator {
+    public SquareRoot(State state) {
         super(state);
     }
 
     /**
-     *
+     * Performs a square root operation.
      */
     @Override
     void execute() {
@@ -15,6 +15,7 @@ public class Root extends Operator{
         String resultString = (int) number - number == 0.0
                 ? Integer.toString((int) number)
                 : Double.toString(number);
-        this.state.pushToStack(resultString);    }
+        this.state.pushToStack(resultString);
+    }
 
 }

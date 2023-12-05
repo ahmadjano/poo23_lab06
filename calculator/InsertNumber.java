@@ -1,8 +1,8 @@
 package calculator;
 
-public class Number extends Operator{
+public class InsertNumber extends Operator{
     int value;
-    public Number(State state, int value) {
+    public InsertNumber(State state, int value) {
         super(state);
         this.value = value;
     }
