@@ -1,7 +1,7 @@
 package calculator;
 
-public class Inverse extends Operator{
-    public Inverse(State state) {
+public class Reciprocal extends Operator{
+    public Reciprocal(State state) {
         super(state);
     }
 

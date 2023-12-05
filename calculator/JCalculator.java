@@ -37,11 +37,10 @@ public class JCalculator extends JFrame {
         // Modifier une zone de texte, JTextField.setText(string nom)
         jNumber.setText(this.state.getCurrentValue());
         // Modifier un composant liste, JList.setListData(Object[] tableau)
-        String[] stackValues = this.state.getStack();
-        if (stackValues.length > 0) {
-            jStack.setListData(stackValues);
-        } else {
+        if (this.state.getStack().isEmpty()) {
             jStack.setListData(empty);
+        } else {
+            jStack.setListData(this.state.toArray());
         }
     }
 
@@ -114,7 +113,7 @@ public class JCalculator extends JFrame {
         addOperatorButton("+", 3, 5, Color.RED, addition);
 
         // Operateurs arithmetiques a un operande: 1/x, x^2, Sqrt
-        addOperatorButton("1/x", 4, 2, Color.RED, new Inverse(state));
+        addOperatorButton("1/x", 4, 2, Color.RED, new Reciprocal(state));
         addOperatorButton("x^2", 4, 3, Color.RED, new Power(state, 2));
         addOperatorButton("Sqrt", 4, 4, Color.RED, new SquareRoot(state));
 
