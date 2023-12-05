@@ -14,5 +14,6 @@ public class Submit extends Operator {
         // then set it to 0
         this.state.pushToStack();
         this.state.resetCurrentValue();
+        this.state.resetEvaluation();
     }
 }
