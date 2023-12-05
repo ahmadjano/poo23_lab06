@@ -41,7 +41,8 @@ public class Calculator {
 
             try {
                 inputDouble = Double.parseDouble(input);
-                state.pushToStack(input);
+                state.setCurrentValue(input);
+                state.pushToStack();
                 System.out.println(state.getStack());
             } catch (NumberFormatException e) {
                 // Assume it's an operator if we can't parse the input to a double.
