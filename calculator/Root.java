@@ -10,11 +10,9 @@ public class Root extends Operator{
      */
     @Override
     void execute() {
-        double number = Double.parseDouble(this.state.popFromStack());
+        double number = this.state.getCurrentValueAsDouble();
         number = Math.sqrt(number);
-        String resultString = (int) number - number == 0.0
-                ? Integer.toString((int) number)
-                : Double.toString(number);
-        this.state.pushToStack(resultString);    }
-
+        this.state.setCurrentValueFromDouble(number);
+        this.state.evaluate();
+    }
 }
