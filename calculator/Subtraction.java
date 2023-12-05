@@ -7,6 +7,13 @@ public class Subtraction extends Operator{
 
     @Override
     void execute() {
-        // subtracts the 2nd item of the stack to the first then add the result on top of the stack
+        double n1,n2;
+        n1 = Double.parseDouble(this.state.popFromStack());
+        n2 = Double.parseDouble(this.state.popFromStack());
+        double result = n1 - n2;
+        String resultString = (int) result - result == 0.0
+                ? Integer.toString((int) result)
+                : Double.toString(result);
+        this.state.pushToStack(resultString);
     }
 }
