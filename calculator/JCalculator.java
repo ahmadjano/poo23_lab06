@@ -29,7 +29,6 @@ public class JCalculator extends JFrame {
     private final GridBagConstraints constraints = new GridBagConstraints();
 
     private final State state = new State();
-    private final Addition addition = new Addition(state);
 
 
     // Mise a jour de l'interface apres une operation (jList et jStack)
@@ -80,10 +79,10 @@ public class JCalculator extends JFrame {
         constraints.gridwidth = 1; // reset width
 
         // Rappel de la valeur en memoire
-        addOperatorButton("MR", 0, 1, Color.RED, null);
+        addOperatorButton("MR", 0, 1, Color.RED, new MemoryRecall(state));
 
         // Stockage d'une valeur en memoire
-        addOperatorButton("MS", 1, 1, Color.RED, null);
+        addOperatorButton("MS", 1, 1, Color.RED, new MemoryStore(state));
 
         // Backspace
         addOperatorButton("<=", 2, 1, Color.RED, new Backspace(state));
@@ -111,7 +110,7 @@ public class JCalculator extends JFrame {
         addOperatorButton("/", 3, 2, Color.RED, new Division(state));
         addOperatorButton("*", 3, 3, Color.RED, new Multiplication(state));
         addOperatorButton("-", 3, 4, Color.RED, new Subtraction(state));
-        addOperatorButton("+", 3, 5, Color.RED, addition);
+        addOperatorButton("+", 3, 5, Color.RED, new Addition(state));
 
         // Operateurs arithmetiques a un operande: 1/x, x^2, Sqrt
         addOperatorButton("1/x", 4, 2, Color.RED, new Inverse(state));
