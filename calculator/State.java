@@ -12,19 +12,8 @@ public class State {
         return this.currentValue;
     }
 
-    public Double getCurrentValueAsDouble() {
-        return Double.parseDouble(this.currentValue);
-    }
-
     public void setCurrentValue(String currentValue) {
         this.currentValue = currentValue;
-    }
-
-    public void setCurrentValueFromDouble(double value) {
-        String resultString = (int) value - value == 0.0
-                ? Integer.toString((int) value)
-                : Double.toString(value);
-        this.setCurrentValue(resultString);
     }
 
     public void pushToStack(){

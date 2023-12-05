@@ -10,6 +10,11 @@ public class SignSwitch extends Operator{
      */
     @Override
     void execute() {
-        this.state.setCurrentValueFromDouble(-this.state.getCurrentValueAsDouble());
+        String currentValue = this.state.getCurrentValue();
+        if (currentValue.startsWith("-")) {
+            this.state.setCurrentValue(currentValue.substring(1));
+        } else {
+            this.state.setCurrentValue('-' + currentValue);
+        }
     }
 }
