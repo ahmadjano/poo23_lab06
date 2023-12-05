@@ -7,12 +7,14 @@ public class Multiplication extends Operator{
 
     @Override
     void execute() {
-        double n1,n2;
-        n1 = Double.parseDouble(this.state.popFromStack());
-        n2 = Double.parseDouble(this.state.popFromStack());
-        double result = n1 * n2;
-        String resultString = (int) result - result == 0.0
-                ? Integer.toString((int) result)
-                : Double.toString(result);
-        this.state.pushToStack(resultString);    }
+        double n1 = Double.parseDouble(this.state.popFromStack());
+        double n2 = Double.parseDouble(this.state.popFromStack());
+        String result = Double.toString(n1 * n2);
+
+        if (result.endsWith(".0")) {
+            state.pushToStack(result.replace(".0", ""));
+        } else {
+            state.pushToStack(result);
+        }
+    }
 }

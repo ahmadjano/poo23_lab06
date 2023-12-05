@@ -119,7 +119,7 @@ public class JCalculator extends JFrame {
         addOperatorButton("Sqrt", 4, 4, Color.RED, new Root(state));
 
         // Entree: met la valeur courante sur le sommet de la pile
-        addOperatorButton("Ent", 4, 5, Color.RED, new Enter(state));
+        addOperatorButton("Ent", 4, 5, Color.RED, new Submit(state));
 
         // Affichage de la pile
         JLabel jLabel = new JLabel("Stack");

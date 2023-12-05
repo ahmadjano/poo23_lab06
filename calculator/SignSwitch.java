@@ -6,7 +6,7 @@ public class SignSwitch extends Operator{
     }
 
     /**
-     *
+     * Switches the sign of the current state value.
      */
     @Override
     void execute() {

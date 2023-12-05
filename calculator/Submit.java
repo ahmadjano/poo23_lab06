@@ -1,8 +1,7 @@
 package calculator;
 
-// could be called submit
-public class Enter extends Operator {
-    public Enter(State state) {
+public class Submit extends Operator {
+    public Submit(State state) {
         super(state);
     }
 
