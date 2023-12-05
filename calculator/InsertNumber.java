@@ -1,8 +1,8 @@
 package calculator;
 
-public class Number extends Operator{
+public class InsertNumber extends Operator{
     int value;
-    public Number(State state, int value) {
+    public InsertNumber(State state, int value) {
         super(state);
         this.value = value;
     }
@@ -14,7 +14,7 @@ public class Number extends Operator{
             this.state.pushToStack();
         }
         String strValue = Integer.toString(value);
-        if (this.state.getCurrentValue().equals(State.DEFAULT_VALUE)){
+        if (this.state.isEmpty()){
             this.state.setCurrentValue(strValue);
             return;
         }

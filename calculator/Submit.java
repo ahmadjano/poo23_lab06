@@ -1,8 +1,7 @@
 package calculator;
 
-// could be called submit
-public class Enter extends Operator {
-    public Enter(State state) {
+public class Submit extends Operator {
+    public Submit(State state) {
         super(state);
     }
 
@@ -14,6 +13,10 @@ public class Enter extends Operator {
         // push the currentValue on top of the stack
         // then set it to 0
         this.state.pushToStack();
+<<<<<<< HEAD:calculator/Enter.java
         this.state.resetCurrentValue();
+=======
+        this.state.resetValue();
+>>>>>>> 05aedbfbbdc40f0bbefa59a0163eecdb40f8ca23:calculator/Submit.java
     }
 }

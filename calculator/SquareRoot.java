@@ -1,12 +1,12 @@
 package calculator;
 
-public class Root extends Operator{
-    public Root(State state) {
+public class SquareRoot extends Operator {
+    public SquareRoot(State state) {
         super(state);
     }
 
     /**
-     *
+     * Performs a square root operation.
      */
     @Override
     void execute() {

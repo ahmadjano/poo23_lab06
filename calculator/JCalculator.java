@@ -37,7 +37,12 @@ public class JCalculator extends JFrame {
         // Modifier une zone de texte, JTextField.setText(string nom)
         jNumber.setText(this.state.getCurrentValue());
         // Modifier un composant liste, JList.setListData(Object[] tableau)
-        jStack.setListData(this.state.getStack());
+        String[] stackValues = this.state.getStack();
+        if (stackValues.length > 0) {
+            jStack.setListData(stackValues);
+        } else {
+            jStack.setListData(empty);
+        }
     }
 
     // Ajout d'un bouton dans l'interface et de l'operation associee,
@@ -92,9 +97,9 @@ public class JCalculator extends JFrame {
         // Boutons 1-9
         for (int i = 1; i < 10; i++)
             addOperatorButton(String.valueOf(i), (i - 1) % 3, 4 - (i - 1) / 3,
-                    Color.BLUE, new Number(state, i));
+                    Color.BLUE, new InsertNumber(state, i));
         // Bouton 0
-        addOperatorButton("0", 0, 5, Color.BLUE, new Number(state, 0));
+        addOperatorButton("0", 0, 5, Color.BLUE, new InsertNumber(state, 0));
 
         // Changement de signe de la valeur courante
         addOperatorButton("+/-", 1, 5, Color.BLUE, new SignSwitch(state));
@@ -111,10 +116,10 @@ public class JCalculator extends JFrame {
         // Operateurs arithmetiques a un operande: 1/x, x^2, Sqrt
         addOperatorButton("1/x", 4, 2, Color.RED, new Inverse(state));
         addOperatorButton("x^2", 4, 3, Color.RED, new Power(state, 2));
-        addOperatorButton("Sqrt", 4, 4, Color.RED, new Root(state));
+        addOperatorButton("Sqrt", 4, 4, Color.RED, new SquareRoot(state));
 
         // Entree: met la valeur courante sur le sommet de la pile
-        addOperatorButton("Ent", 4, 5, Color.RED, new Enter(state));
+        addOperatorButton("Ent", 4, 5, Color.RED, new Submit(state));
 
         // Affichage de la pile
         JLabel jLabel = new JLabel("Stack");

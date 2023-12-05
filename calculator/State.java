@@ -3,8 +3,7 @@ package calculator;
 import util.Stack;
 
 public class State {
-    public static final String DEFAULT_VALUE = "0";
-    private static final String[] DEFAULT_STACK = new String[] {"< empty stack >"};
+    private static final String DEFAULT_VALUE = "0";
     private String currentValue = DEFAULT_VALUE; // value currently being inputted
 
     private boolean evaluated = false;
@@ -14,7 +13,6 @@ public class State {
     public String getCurrentValue() {
         return this.currentValue;
     }
-
     public void evaluate(){
         this.evaluated = true;
     }
@@ -33,7 +31,6 @@ public class State {
     public void setCurrentValue(String currentValue) {
         this.currentValue = currentValue;
     }
-
     public void setCurrentValueFromDouble(double value) {
         String resultString = (int) value - value == 0.0
                 ? Integer.toString((int) value)
@@ -55,13 +52,18 @@ public class State {
     }
 
     public String[] getStack(){
-        if(this.stack.isEmpty()){
-            return DEFAULT_STACK;
-        }
         return this.stack.toArray(new String[this.stack.size()]);
     }
 
     public void setStack(Stack<String> stack){
         this.stack = stack;
+    }
+
+    public void resetValue() {
+        this.currentValue = DEFAULT_VALUE;
+    }
+
+    public boolean isEmpty() {
+        return this.currentValue.equals(DEFAULT_VALUE);
     }
 }
