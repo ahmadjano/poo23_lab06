@@ -10,7 +10,11 @@ public class Root extends Operator{
      */
     @Override
     void execute() {
-        // get the first value of the stack and apply a root to it then push new value on top of stack
-    }
+        double number = Double.parseDouble(this.state.popFromStack());
+        number = Math.sqrt(number);
+        String resultString = (int) number - number == 0.0
+                ? Integer.toString((int) number)
+                : Double.toString(number);
+        this.state.pushToStack(resultString);    }
 
 }
