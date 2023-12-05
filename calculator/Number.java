@@ -9,6 +9,10 @@ public class Number extends Operator{
 
     @Override
     void execute() {
+        if(this.state.hasBeenEvaluated()){
+            this.state.resetEvaluation();
+            this.state.pushToStack();
+        }
         String strValue = Integer.toString(value);
         if (this.state.getCurrentValue().equals(State.DEFAULT_VALUE)){
             this.state.setCurrentValue(strValue);

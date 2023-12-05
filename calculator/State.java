@@ -7,12 +7,25 @@ public class State {
     private static final String[] DEFAULT_STACK = new String[] {"< empty stack >"};
     private String currentValue = DEFAULT_VALUE; // value currently being inputted
 
+    private boolean evaluated = false;
+
     private Stack<String> stack = new Stack<>(); // stack of all values
 
     public String getCurrentValue() {
         return this.currentValue;
     }
 
+    public void evaluate(){
+        this.evaluated = true;
+    }
+
+    public void resetEvaluation(){
+        this.evaluated = false;
+    }
+
+    public boolean hasBeenEvaluated(){
+        return this.evaluated;
+    }
     public Double getCurrentValueAsDouble() {
         return Double.parseDouble(this.currentValue);
     }
@@ -28,8 +41,13 @@ public class State {
         this.setCurrentValue(resultString);
     }
 
+    public void resetCurrentValue(){
+        this.currentValue = DEFAULT_VALUE;
+    }
+
     public void pushToStack(){
         this.stack.push(currentValue);
+        this.resetCurrentValue();
     }
 
     public void pushToStack(String value){
