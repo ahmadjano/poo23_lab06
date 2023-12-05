@@ -8,7 +8,20 @@ public class State {
 
     private boolean evaluated = false;
 
+    private String storedValue = null;
+
     private Stack<String> stack = new Stack<>(); // stack of all values
+
+    public void storeValue(){
+        this.storedValue = this.currentValue;
+        this.resetCurrentValue();
+    }
+
+    public void recallValue(){
+        if (this.storedValue != null){
+            this.currentValue = this.storedValue;
+        }
+    }
 
     public String getCurrentValue() {
         return this.currentValue;
