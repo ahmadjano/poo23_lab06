@@ -19,8 +19,10 @@ public class Submit extends Operator {
      */
     @Override
     void execute() {
-        this.state.pushToStack();
-        this.state.resetCurrentValue();
-        this.state.resetEvaluation();
+        if (!this.state.getStatus().equals(State.CalculatorState.ERROR)) {
+            this.state.pushToStack();
+            this.state.resetCurrentValue();
+            this.state.updateStatus(State.CalculatorState.INPUT);
+        }
     }
 }

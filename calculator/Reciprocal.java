@@ -19,11 +19,13 @@ public class Reciprocal extends Operator{
      */
     @Override
     void execute() {
-        double number = this.state.getCurrentValueAsDouble();
-        if (number != 0.0){
-            number = 1/number;
-            this.state.setCurrentValueFromDouble(number);
-            this.state.evaluate();
+        if (!this.state.getStatus().equals(State.CalculatorState.ERROR)) {
+            double number = this.state.getCurrentValueAsDouble();
+            if (number != 0.0) {
+                number = 1 / number;
+                this.state.setCurrentValueFromDouble(number);
+                this.state.updateStatus(State.CalculatorState.POST_OPERATION);
+            }
         }
     }
 }

@@ -20,7 +20,9 @@ public class Backspace extends Operator{
      */
     @Override
     void execute() {
-        String currentValue = this.state.getCurrentValue();
-        this.state.setCurrentValue(currentValue.substring(0, currentValue.length() - 1));
+        if (!this.state.getStatus().equals(State.CalculatorState.ERROR)) {
+            String currentValue = this.state.getCurrentValue();
+            this.state.setCurrentValue(currentValue.substring(0, currentValue.length() - 1));
+        }
     }
 }

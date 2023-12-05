@@ -22,15 +22,17 @@ public class InsertNumber extends Operator{
      */
     @Override
     void execute() {
-        if(this.state.hasBeenEvaluated()){
-            this.state.resetEvaluation();
-            this.state.pushToStack();
+        if (!this.state.getStatus().equals(State.CalculatorState.ERROR)) {
+            if (this.state.getStatus().equals(State.CalculatorState.POST_OPERATION)) {
+                this.state.updateStatus(State.CalculatorState.INPUT);
+                this.state.pushToStack();
+            }
+            String strValue = Integer.toString(value);
+            if (this.state.isEmpty()) {
+                this.state.setCurrentValue(strValue);
+                return;
+            }
+            this.state.setCurrentValue(this.state.getCurrentValue() + strValue);
         }
-        String strValue = Integer.toString(value);
-        if (this.state.isEmpty()){
-            this.state.setCurrentValue(strValue);
-            return;
-        }
-        this.state.setCurrentValue(this.state.getCurrentValue() + strValue);
     }
 }

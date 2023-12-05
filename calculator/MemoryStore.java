@@ -20,6 +20,8 @@ public class MemoryStore extends Operator{
      */
     @Override
     void execute() {
-        this.state.storeValue();
+        if (!this.state.getStatus().equals(State.CalculatorState.ERROR)) {
+            this.state.storeValue();
+        }
     }
 }

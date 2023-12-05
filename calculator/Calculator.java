@@ -29,7 +29,6 @@ public class Calculator {
 
         Scanner scanner = new Scanner(System.in);
         String input;
-        double inputDouble;
 
         do {
             System.out.print("> ");
@@ -40,7 +39,6 @@ public class Calculator {
             }
 
             try {
-                inputDouble = Double.parseDouble(input);
                 state.setCurrentValue(input);
                 state.pushToStack();
                 System.out.println(state.getStack());
