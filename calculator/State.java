@@ -110,12 +110,16 @@ public class State {
         return this.stack.pop();
     }
 
+    public Stack<String> getStack() {
+        return stack;
+    }
+
     /**
      * Returns the stack as array
      * @return String[]
      */
-    public String[] getStack(){
-        return this.stack.toArray(new String[this.stack.size()]);
+    public String[] toArray() {
+        return this.stack.toArray(new String[stack.size()]);
     }
 
     /**

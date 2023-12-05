@@ -1,16 +1,15 @@
 package calculator;
 
 /**
- * Inverse Class
+ * Reciprocal Class
  * 1/x
  */
-public class Inverse extends Operator{
-
+public class Reciprocal extends Operator{
     /**
-     * Inverse constructor
+     * Reciprocal constructor
      * @param state - State
      */
-    public Inverse(State state) {
+    public Reciprocal(State state) {
         super(state);
     }
 
