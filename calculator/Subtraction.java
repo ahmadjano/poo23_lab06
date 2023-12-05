@@ -14,5 +14,6 @@ public class Subtraction extends Operator{
         String resultString = (int) result - result == 0.0
                 ? Integer.toString((int) result)
                 : Double.toString(result);
-        this.state.pushToStack(resultString);    }
+        this.state.pushToStack(resultString);
+    }
 }

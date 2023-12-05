@@ -10,6 +10,6 @@ public class SignSwitch extends Operator{
      */
     @Override
     void execute() {
-        //this.state.setCurrentValue(-this.state.getCurrentValue());
+        this.state.setCurrentValueFromDouble(-this.state.getCurrentValueAsDouble());
     }
 }
