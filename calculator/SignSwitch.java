@@ -20,11 +20,13 @@ public class SignSwitch extends Operator{
      */
     @Override
     void execute() {
-        String currentValue = this.state.getCurrentValue();
-        if (currentValue.startsWith("-")) {
-            this.state.setCurrentValue(currentValue.substring(1));
-        } else {
-            this.state.setCurrentValue('-' + currentValue);
+        if (!this.state.getStatus().equals(State.CalculatorState.ERROR)) {
+            String currentValue = this.state.getCurrentValue();
+            if (currentValue.startsWith("-")) {
+                this.state.setCurrentValue(currentValue.substring(1));
+            } else {
+                this.state.setCurrentValue('-' + currentValue);
+            }
         }
     }
 }

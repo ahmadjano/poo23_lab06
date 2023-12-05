@@ -20,6 +20,9 @@ public class Division extends ArithmeticOperator{
      */
     @Override
     protected Double performOperation(double d1, double d2) {
+        if (d2 == 0.0){
+            this.state.updateStatus(State.CalculatorState.ERROR);
+        }
         return d1 / d2;
     }
 }

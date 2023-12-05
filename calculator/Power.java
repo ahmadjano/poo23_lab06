@@ -22,9 +22,11 @@ public class Power extends Operator{
      */
     @Override
     void execute() {
-        double number = this.state.getCurrentValueAsDouble();
-        number = Math.pow(number,this.exponent);
-        this.state.setCurrentValueFromDouble(number);
-        this.state.evaluate();
+        if (!this.state.getStatus().equals(State.CalculatorState.ERROR)) {
+            double number = this.state.getCurrentValueAsDouble();
+            number = Math.pow(number, this.exponent);
+            this.state.setCurrentValueFromDouble(number);
+            this.state.updateStatus(State.CalculatorState.POST_OPERATION);
+        }
     }
 }

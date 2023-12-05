@@ -20,6 +20,8 @@ public class MemoryRecall extends Operator{
      */
     @Override
     void execute() {
-        this.state.recallValue();
+        if (!this.state.getStatus().equals(State.CalculatorState.ERROR)) {
+            this.state.recallValue();
+        }
     }
 }

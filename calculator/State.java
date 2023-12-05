@@ -7,9 +7,10 @@ import util.Stack;
 public class State {
     private static final String DEFAULT_VALUE = "0";
     private String currentValue = DEFAULT_VALUE; // value currently being inputted
-    private boolean evaluated = false;
     private String storedValue = null;
     private Stack<String> stack = new Stack<>(); // stack of all values
+
+    private CalculatorState status = CalculatorState.INPUT;
 
     /**
      * Store the current value
@@ -72,26 +73,19 @@ public class State {
     }
 
     /**
-     * Sets evaluated to true
-     * Called when an operation has been done on current value (like an addition)
+     * Update the status
+     * @param status - Status to be set
      */
-    public void evaluate(){
-        this.evaluated = true;
+    public void updateStatus(CalculatorState status){
+        this.status = status;
     }
 
     /**
-     * Resets evaluation
+     * Returns the current status
+     * @return CalculatorState
      */
-    public void resetEvaluation(){
-        this.evaluated = false;
-    }
-
-    /**
-     * Returns evaluated value
-     * @return boolean
-     */
-    public boolean hasBeenEvaluated(){
-        return this.evaluated;
+    public CalculatorState getStatus(){
+        return this.status;
     }
 
     /**
@@ -110,6 +104,10 @@ public class State {
         return this.stack.pop();
     }
 
+    /**
+     * Returns the stack
+     * @return Stack<String>
+     */
     public Stack<String> getStack() {
         return stack;
     }
@@ -136,5 +134,11 @@ public class State {
      */
     public boolean isEmpty() {
         return this.currentValue.equals(DEFAULT_VALUE);
+    }
+
+    public enum CalculatorState {
+        POST_OPERATION,
+        ERROR,    // Error state
+        INPUT,    // Input mode for entering numbers
     }
 }

@@ -28,12 +28,14 @@ public abstract class ArithmeticOperator extends Operator{
      */
     @Override
     void execute() {
-        // from stack
-        double n1 = Double.parseDouble(this.state.popFromStack());
+        if (!this.state.getStatus().equals(State.CalculatorState.ERROR)){
+            // from stack
+            double n1 = Double.parseDouble(this.state.popFromStack());
 
-        // from current value
-        double n2 = this.state.getCurrentValueAsDouble();
-        this.state.setCurrentValueFromDouble(performOperation(n1, n2));
-        this.state.evaluate();
+            // from current value
+            double n2 = this.state.getCurrentValueAsDouble();
+            this.state.setCurrentValueFromDouble(performOperation(n1, n2));
+            this.state.updateStatus(State.CalculatorState.POST_OPERATION);
+        }
     }
 }

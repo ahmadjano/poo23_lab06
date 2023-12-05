@@ -20,9 +20,12 @@ public class Decimal extends Operator{
      */
     @Override
     void execute() {
-        if(this.state.getCurrentValue().contains(".")){
-            return;
+        if (!this.state.getStatus().equals(State.CalculatorState.ERROR)) {
+
+            if (this.state.getCurrentValue().contains(".")) {
+                return;
+            }
+            this.state.setCurrentValue(this.state.getCurrentValue() + '.');
         }
-        this.state.setCurrentValue(this.state.getCurrentValue() + '.');
     }
 }
