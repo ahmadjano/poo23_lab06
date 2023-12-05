@@ -11,5 +11,8 @@ public class Subtraction extends Operator{
         n1 = Double.parseDouble(this.state.popFromStack());
         n2 = Double.parseDouble(this.state.popFromStack());
         double result = n1 - n2;
-        this.state.pushToStack(Double.toString(result));    }
+        String resultString = (int) result - result == 0.0
+                ? Integer.toString((int) result)
+                : Double.toString(result);
+        this.state.pushToStack(resultString);    }
 }
