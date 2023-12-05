@@ -104,7 +104,7 @@ public class JCalculator extends JFrame {
         addOperatorButton("+/-", 1, 5, Color.BLUE, new SignSwitch(state));
 
         // Operateur point (chiffres apres la virgule ensuite)
-        addOperatorButton(".", 2, 5, Color.BLUE, new Point(state));
+        addOperatorButton(".", 2, 5, Color.BLUE, new Decimal(state));
 
         // Operateurs arithmetiques a deux operandes: /, *, -, +
         addOperatorButton("/", 3, 2, Color.RED, new Division(state));

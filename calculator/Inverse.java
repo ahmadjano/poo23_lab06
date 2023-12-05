@@ -1,12 +1,22 @@
 package calculator;
 
+/**
+ * Inverse Class
+ * 1/x
+ */
 public class Inverse extends Operator{
+
+    /**
+     * Inverse constructor
+     * @param state - State
+     */
     public Inverse(State state) {
         super(state);
     }
 
     /**
-     *
+     * Execute method
+     * Apply 1/x on the currentValue
      */
     @Override
     void execute() {

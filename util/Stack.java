@@ -4,6 +4,7 @@ import java.util.NoSuchElementException;
 
 /**
  * Stack Class.
+ * Used to stack values using nodes
  * @param <T> - Type of data to be stored
  */
 public class Stack<T> implements Iterable<T>{
@@ -69,6 +70,7 @@ public class Stack<T> implements Iterable<T>{
     }
 
     /**
+     * Iterator to iterate on Nodes
      * @return Iterator<T>
      */
     @Override
