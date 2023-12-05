@@ -13,6 +13,6 @@ public class Submit extends Operator {
         // push the currentValue on top of the stack
         // then set it to 0
         this.state.pushToStack();
-        this.state.resetValue();
+        this.state.resetCurrentValue();
     }
 }

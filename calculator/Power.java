@@ -12,15 +12,9 @@ public class Power extends Operator{
      */
     @Override
     void execute() {
-        // take the first number of the stack
-        // pow(2) of it
-        // push it back on top of stack
-        double number = Double.parseDouble(this.state.popFromStack());
+        double number = this.state.getCurrentValueAsDouble();
         number = Math.pow(number,this.exponent);
-        String resultString = (int) number - number == 0.0
-                ? Integer.toString((int) number)
-                : Double.toString(number);
-        this.state.pushToStack(resultString);
-
+        this.state.setCurrentValueFromDouble(number);
+        this.state.evaluate();
     }
 }
