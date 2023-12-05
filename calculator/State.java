@@ -64,39 +64,72 @@ public class State {
         this.setCurrentValue(resultString);
     }
 
+    /**
+     * Reset current value to default
+     */
     public void resetCurrentValue(){
         this.currentValue = DEFAULT_VALUE;
     }
 
+    /**
+     * Sets evaluated to true
+     * Called when an operation has been done on current value (like an addition)
+     */
     public void evaluate(){
         this.evaluated = true;
     }
 
+    /**
+     * Resets evaluation
+     */
     public void resetEvaluation(){
         this.evaluated = false;
     }
 
+    /**
+     * Returns evaluated value
+     * @return boolean
+     */
     public boolean hasBeenEvaluated(){
         return this.evaluated;
     }
 
+    /**
+     * Pushes current value to stack then reset it
+     */
     public void pushToStack(){
         this.stack.push(currentValue);
         this.resetCurrentValue();
     }
 
+    /**
+     * Pops the top value from stack and return it
+     * @return String - value
+     */
     public String popFromStack(){
         return this.stack.pop();
     }
 
+    /**
+     * Returns the stack as array
+     * @return String[]
+     */
     public String[] getStack(){
         return this.stack.toArray(new String[this.stack.size()]);
     }
 
+    /**
+     * Set a new stack
+     * @param stack - Stack
+     */
     public void setStack(Stack<String> stack){
         this.stack = stack;
     }
 
+    /**
+     * Check if currentValue is empty
+     * @return boolean
+     */
     public boolean isEmpty() {
         return this.currentValue.equals(DEFAULT_VALUE);
     }
