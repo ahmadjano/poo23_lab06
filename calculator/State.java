@@ -5,7 +5,7 @@ import util.Stack;
 public class State {
     private String currentValue = "0"; // value currently being inputted
 
-    private final Stack<String> stack = new Stack<>(); // stack of all values
+    private Stack<String> stack = new Stack<>(); // stack of all values
 
     public State() {
     }
@@ -50,5 +50,9 @@ public class State {
             return new String[] {"< empty stack >"};
         }
         return this.stack.toArray(new String[this.stack.size()]);
+    }
+
+    public void setStack(Stack<String> stack){
+        this.stack = stack;
     }
 }
