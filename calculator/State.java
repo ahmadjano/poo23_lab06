@@ -1,7 +1,7 @@
 package calculator;
 
 public class State {
-    private double currentValue; // value currently being inputted
+    private String currentValue = "0"; // value currently being inputted
 
     private final Stack<Double> values; // stack of all values
 
@@ -9,20 +9,29 @@ public class State {
         this.values = new Stack<Double>();
     }
 
-    public double getCurrentValue() {
-        return currentValue;
+    public String getCurrentValue() {
+        return this.currentValue;
     }
 
-    public void setCurrentValue(double currentValue) {
+    public void setCurrentValue(String currentValue) {
         this.currentValue = currentValue;
     }
 
     public void addNumberToCurrentValue(int number){
-        String currentValueString = Double.toString(this.currentValue);
+        if (this.currentValue.equals("0")){
+            this.currentValue = Integer.toString(number);
+            return;
+        }
 
-        String resultString = currentValueString + number;
+        this.currentValue += number;
+    }
 
-        this.currentValue = Double.parseDouble(resultString);
+    public void addDecimalToCurrentValue(){
+        if(this.currentValue.contains(".")){
+            return;
+        }
+
+        this.currentValue += '.';
     }
 
     // Add more state-related methods as needed
