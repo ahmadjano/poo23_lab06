@@ -26,6 +26,7 @@ public class InsertNumber extends Operator{
             if (this.state.getStatus().equals(State.CalculatorState.POST_OPERATION)) {
                 this.state.updateStatus(State.CalculatorState.INPUT);
                 this.state.pushToStack();
+                this.state.resetCurrentValue();
             }
             String strValue = Integer.toString(value);
             if (this.state.isEmpty()) {

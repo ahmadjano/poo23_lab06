@@ -3,8 +3,8 @@ package calculator;
 import java.util.*;
 
 public class Calculator {
-    private State state;
-    private Map<String, Operator> operators;
+    private final State state;
+    private final Map<String, Operator> operators;
 
     public Calculator() {
         this.state = new State();
@@ -39,6 +39,7 @@ public class Calculator {
             }
 
             try {
+                Double.parseDouble(input);
                 state.setCurrentValue(input);
                 state.pushToStack();
                 System.out.println(state.getStack());

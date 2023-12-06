@@ -93,7 +93,6 @@ public class State {
      */
     public void pushToStack(){
         this.stack.push(currentValue);
-        this.resetCurrentValue();
     }
 
     /**
