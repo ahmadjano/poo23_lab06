@@ -18,50 +18,74 @@ Le diagramme de classes UML ci-dessous illustre la structure des classes dans no
 
 ### Fonctionalités
 
-#### Classe `Jcalculatrice`
+#### Classe Stack
 
-La classe principale, Matrix, offre deux constructeurs permettant de créer des matrices avec des spécifications particulières. La première prend des lignes spécifiées en argument, tandis que la seconde génère une matrice aléatoire en fonction du nombre de colonnes et de lignes souhaité.
+La class `Stack` est la classe permettant le stockage en pile des valeurs.
 
-La classe Matrix propose des méthodes pour effectuer les opérations matricielles de base telles que l'addition, la soustraction et la multiplication. Ces opérations sont effectuées en tenant compte d'un modulo spécifié, assurant la cohérence des résultats.
+Elle contient une classe interne `Node` qui permet de stocker et chainer des valeurs. `Node` va stocker la valeur donnée ainsi que le noeud suivant, cela permet de créer une chaîne de noeuds.
+
+`Stack` va donc interagir avec les noeuds et va proposer des outils pour le faire. Elle va stocker le point de départ de la chaîne dans l'attribut `top` qui va correspondre au haut de la pile (une `Node`).
+
+La classe met donc à disposition des outils pour interragir avec la pile, comme push(), pop() ou encore toArray().
+
+#### Classe State
+
+La classe `State` est le coeur de la calculatrice, c'est ici que les états et valeur vont être stockés.
+Elle comprend plusieurs attributs dont la valeur courante, le stack, un état ainsi qu'une valeur stockée en mémoire.
+
+Elle implémente un `Stack` afin de pouvoir stocker sur une pile les valeurs dont elle n'a besoin de suite (très courant dans la méthode RPN).
+
+La valeur courante représente la valeur en cours d'utilisation alors que la valeur en mémoire représente une valeur stockée pour plus tard.
 
 #### Interface `Operator`
 
-L'interface `Operable` joue un rôle central dans notre conception, permettant d'abstraire les opérations matricielles. Cette interface définit une méthode `int perform(int v1, int v2)` qui prend deux valeurs en paramètres et retourne le résultat de l'opération appliquée à ces valeurs.
-
-Cette abstraction permet une flexibilité considérable, car toute classe qui implémente cette interface peut être utilisée dans le contexte des opérations matricielles. Cela favorise une extension facile du code pour de nouvelles opérations.
+L'interface `Operator` joue un rôle central dans notre conception, permettant d'abstraire les opérateurs qui interviendront dans la calculatrice. Cette interface définit une méthode `void execute()` qui va manipuler le State (que cela soit en intéragissant avec le stack, la valeur courante, la valeur en mémoire, etc...)
 
 Exemple d'implémentation :
 
 ```java
-package org.example;
+package calculator;
 
-public class Addition implements Operable {
+/**
+ * Power class
+ */
+public class Power extends Operator{
+    private final int exponent;
+
+    /**
+     * Power constructor
+     * @param state - State
+     * @param exponent - Exponent for the power
+     */
+    public Power(State state, int exponent) {
+        super(state);
+        this.exponent = exponent;
+    }
+
+    /**
+     * Execute method
+     * Applies power to the current value
+     */
     @Override
-    public int perform(int v1, int v2) {
-        return v1 + v2;
+    public void execute() {
+        if (!this.state.getStatus().equals(State.CalculatorState.ERROR)) {
+            double number = this.state.getCurrentValueAsDouble();
+            number = Math.pow(number, this.exponent);
+            this.state.setCurrentValueFromDouble(number);
+            this.state.updateStatus(State.CalculatorState.POST_OPERATION);
+        }
     }
 }
+
 ```
 
+#### Classe `Jcalculatrice`
+
+La classe principale de la calculatrice graphique. Elle va construire l'application graphique en implémentant des JButton qui vont appeler des `Operator` et des JTextField et JTextList afin de tout fournir à l'utilisateur.
+Elle a aussi un `State` qui va être le state principal.
+
+#### Classe `Calculator`
+
+Est une classe implémentant des `Operator` et un `State` permettant d'effectuer des opérations de calcul en CLI.
+
 ## Tests
-
-### Fonction testProgram() dans main
-
-Nous avons créé une fonction de test, testProgram(), conforme aux spécifications du laboratoire. Cette fonction prend en paramètres les dimensions (N1, M1, N2, M2) ainsi qu'un modulo. Elle génère ensuite deux matrices aléatoires de tailles respectives N1 x M1 et N2 x M2 avec un modulo commun. Les opérations entre ces matrices sont affichées à chaque étape du processus.
-
-![testProgram() output](image-1.png)
-
-### Tests unitaires
-
-Pour garantir une évaluation complète de notre code, nous avons intégré des tests unitaires à l'aide de la bibliothèque JUnit. Ces tests couvrent différentes fonctionnalités de la classe Matrix :
-
-![Alt text](image-3.png)
-
-Les tests effectués sont :
-
-- Subtract() : Soustrait une matrice à une autre
-- Add() : Additionne une matrice à une autre
-- Multiply(): Multiplie une matrice à une autre
-- Equals() : compare deux matrices
-- shouldThrowWhenModulusNotEquals() : Teste lorsque les modulo ne sont pas égaux
-- shouldThrowWhenRowsNotEquals() : Teste lorsque les lignes n'ont pas la même longueur dans une matrice
