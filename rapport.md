@@ -18,7 +18,7 @@ Le diagramme de classes UML ci-dessous illustre la structure des classes dans no
 
 ### Fonctionalités
 
-#### Classe Stack
+#### Classe `Stack`
 
 La class `Stack` est la classe permettant le stockage en pile des valeurs.
 
@@ -28,7 +28,7 @@ Elle contient une classe interne `Node` qui permet de stocker et chainer des val
 
 La classe met donc à disposition des outils pour interragir avec la pile, comme push(), pop() ou encore toArray().
 
-#### Classe State
+#### Classe `State`
 
 La classe `State` est le coeur de la calculatrice, c'est ici que les états et valeur vont être stockés.
 Elle comprend plusieurs attributs dont la valeur courante, le stack, un état ainsi qu'une valeur stockée en mémoire.
