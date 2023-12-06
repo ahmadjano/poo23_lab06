@@ -43,10 +43,15 @@ public class Calculator {
                 state.setCurrentValue(input);
                 state.pushToStack();
                 System.out.println(state.getStack());
+                this.state.updateStatus(State.CalculatorState.INPUT);
             } catch (NumberFormatException e) {
                 // Assume it's an operator if we can't parse the input to a double.
                 if (operators.containsKey(input)) {
+                    state.popFromStack();
                     operators.get(input).execute();
+                    if (!input.equals("clear")){
+                        state.pushToStack();
+                    }
                     System.out.println(state.getStack());
                 } else {
                     System.out.println("Error: Invalid operator.");
