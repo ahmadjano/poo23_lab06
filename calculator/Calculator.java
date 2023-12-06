@@ -1,3 +1,10 @@
+/**
+ * HEIG-VD
+ * Laboratoire 6 - Calculatrice
+ * @author Ahmad Jano & Richard Aurélien
+ * @date 06.12.2023
+ */
+
 package calculator;
 
 import java.util.*;

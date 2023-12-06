@@ -1,3 +1,10 @@
+/**
+ * HEIG-VD
+ * Laboratoire 6 - Calculatrice
+ * @author Ahmad Jano & Richard Aurélien
+ * @date 06.12.2023
+ */
+
 package calculator;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -5,6 +12,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Units tests for JCalculator class.
+ */
 public class JCalculatorTest {
 
     private State state;

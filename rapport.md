@@ -68,12 +68,37 @@ public class Power extends Operator{
      */
     @Override
     public void execute() {
-        if (!this.state.getStatus().equals(State.CalculatorState.ERROR)) {
-            double number = this.state.getCurrentValueAsDouble();
-            number = Math.pow(number, this.exponent);
-            this.state.setCurrentValueFromDouble(number);
-            this.state.updateStatus(State.CalculatorState.POST_OPERATION);
+        if (this.state.getStatus().equals(State.CalculatorState.ERROR)) {
+            return;
         }
+        
+        double number = this.state.getCurrentValueAsDouble();
+        number = Math.pow(number, this.exponent);
+        this.state.setCurrentValueFromDouble(number);
+        this.state.updateStatus(State.CalculatorState.POST_OPERATION);
+    }
+}
+
+```
+
+#### Classe `ArithmeticOperator`
+La classe ArithmeticOperator joue un rôle important dans la hiérarchie des opérateurs de la calculatrice. En tant que classe abstraite, elle fournit une base pour la mise en œuvre d'opérations arithmétiques spécifiques telles que l'addition, la soustraction, la multiplication et la division.
+
+L'objectif principal de la classe est de définir la structure commune et le comportement attendu pour toutes les opérations arithmétiques. Elle encapsule la logique de base partagée par ces opérations, tandis que les sous-classes spécialisées, telles que Addition, Subtraction, Multiplication, et Division, fournissent l'implémentation spécifique de chaque opération. Chaque sous-classe doit fournir une implémentation de la méthode performOperation, décrivant comment l'opération particulière doit être effectuée.
+
+```java
+package calculator;
+
+public abstract class ArithmeticOperator extends Operator {
+    public ArithmeticOperator(State state) {
+        super(state);
+    }
+
+    protected abstract Double performOperation(double d1, double d2) throws ArithmeticException;
+    
+    @Override
+    public void execute() {
+        // Shared logic between +, *, -, /
     }
 }
 
@@ -88,4 +113,60 @@ Elle a aussi un `State` qui va être le state principal.
 
 Est une classe implémentant des `Operator` et un `State` permettant d'effectuer des opérations de calcul en CLI.
 
-## Tests
+## Tests unitaires
+Les tests unitaires pour l'application GUI visent à vérifier le bon fonctionnement des différentes fonctionnalités de la calculatrice.
+
+### JCalculatorTest
+![](tests_jcalculator.png)
+
+Voici les scénarios importants testés:
+
+#### Test de division par zéro (divisionZeroTest):
+- Description : Vérifie si l'application signale correctement une division par zéro.
+- Scénario : Insère le chiffre 5, effectue une soumission, puis insère le chiffre 0 et effectue une division.
+- Résultat Attendu : La valeur d'erreur devrait être "Division by zero is not allowed".
+
+#### Test de virgule multiple (multipleDecimalTest):
+- Description : Vérifie si l'application gère correctement l'insertion de plusieurs décimales successives.
+- Scénario : Insère le chiffre 1, suivi de quatre décimales, puis le chiffre 2.
+- Résultat Attendu : "1.2".
+
+#### Test d'opérande manquante (missingOperandTest):
+- Description : Vérifie si l'application signale correctement une opération avec une opérande manquante.
+- Scénario : Insère le chiffre 3, puis tente une opération d'addition.
+- Résultat Attendu : La valeur d'erreur devrait être "Second operand missing".
+
+#### Test d'addition avec nombres contenant des virgules (additionDecimalTest):
+- Description : Vérifie si l'application effectue correctement une addition avec une décimale.
+- Scénario : Insère le chiffre 3, suivi d'une décimale, puis le chiffre 5. Effectue une soumission, puis insère le chiffre 4 et effectue une addition.
+- Résultat Attendu : "7.5"
+
+#### Test de soustraction avec une seule insertion (subtractionOneInsertionTest):
+- Description : Vérifie si l'application gère correctement la soustraction avec un seul saisi, c'est à dire bien considérer que la deuxième opérande est égal à 0.
+- Scénario : Insère le chiffre 8, effectue une soumission, puis une soustraction.
+- Résultat Attendu : "8"
+
+#### Test de soustraction avec nombres négatifs (subtractionNegativeTest):
+- Description : Vérifie si l'application effectue correctement la soustraction avec des nombres négatifs.
+- Scénario : Insère le chiffre 2, effectue une soumission, insère le chiffre 5, puis effectue une soustraction.
+- Résultat Attendu : "-3".
+
+#### Test de division avec nombres flottants (divisionDecimalTest):
+- Description : Vérifie si l'application effectue correctement une division avec une décimale.
+- Scénario : Insère 7, suivi d'une décimale, puis 5, effectue une soumission. Ensuite, insère le chiffre 3 et effectue une division.
+- Résultat Attendu : "2.5".
+
+#### Test de racine carrée avec nombre négatif (squareRootNegativeTest):
+- Description : Vérifie si l'application signale correctement l'utilisation d'une racine carrée sur un nombre négatif.
+- Scénario : Insère le chiffre -1 et effectue une racine carrée.
+- Résultat Attendu : La valeur d'erreur devrait être "Negative numbers with square roots are not allowed".
+
+#### Test de valeur réciproque avec Zéro (reciprocalZeroTest):
+- Description : Vérifie si l'application signale correctement une réciproque de zéro.
+- Scénario : Insère le chiffre 0 et effectue une réciproque.
+- Résultat Attendu : La valeur d'erreur devrait être "Division by zero is not allowed"
+
+### CalculatorTest
+![](tests_calculator.png)
+
+Les tests pour les versions CLI partagent des objectifs similaires, se concentrant sur la validation de la fonctionnalité mise en œuvre. Cependant, leurs implémentations diffèrent en raison de la nature des interactions et des méthodes d'entrée associées à chaque interface.
