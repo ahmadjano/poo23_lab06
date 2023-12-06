@@ -19,7 +19,7 @@ public class SignSwitch extends Operator {
      * If the current value is positive, it becomes negative, and vice versa.
      */
     @Override
-    void execute() {
+    public void execute() {
         if (this.state.getStatus().equals(State.CalculatorState.ERROR)) {
             return;
         }

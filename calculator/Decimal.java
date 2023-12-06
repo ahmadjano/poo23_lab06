@@ -19,7 +19,7 @@ public class Decimal extends Operator {
      * If the current value already contains a decimal point, no action is taken.
      */
     @Override
-    void execute() {
+    public void execute() {
         if (this.state.getStatus().equals(State.CalculatorState.ERROR)) {
             return;
         }

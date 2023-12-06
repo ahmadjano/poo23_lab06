@@ -20,5 +20,5 @@ public abstract class Operator {
     /**
      * Execute method to be implemented by subclasses to define the behavior of the operator.
      */
-    abstract void execute();
+    public abstract void execute();
 }

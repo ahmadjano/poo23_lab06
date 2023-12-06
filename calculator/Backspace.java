@@ -18,7 +18,7 @@ public class Backspace extends Operator {
      * Removes the last character from the current value.
      */
     @Override
-    void execute() {
+    public void execute() {
         if (this.state.getStatus().equals(State.CalculatorState.ERROR)) {
             // If the calculator is in an error state, do nothing.
             return;

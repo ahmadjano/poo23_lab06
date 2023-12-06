@@ -22,7 +22,7 @@ public class Clear extends ClearError {
      * It invokes the clearing logic from the superclass ClearError and sets the stack to an empty Stack.
      */
     @Override
-    void execute() {
+    public void execute() {
         super.execute(); // Invoke error-related clearing logic
         state.setStack(new Stack<>()); // Clear the stack
     }

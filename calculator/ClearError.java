@@ -19,7 +19,7 @@ public class ClearError extends Operator {
      * It updates the status to INPUT and removes any errors that may be present.
      */
     @Override
-    void execute() {
+    public void execute() {
         this.state.resetCurrentValue();
         this.state.updateStatus(State.CalculatorState.INPUT);
     }

@@ -18,7 +18,7 @@ public class MemoryRecall extends Operator {
      * Execute method recalls the stored value from the state if the calculator is not in an error state.
      */
     @Override
-    void execute() {
+    public void execute() {
         if (this.state.getStatus().equals(State.CalculatorState.ERROR)) {
             return;
         }

@@ -22,7 +22,7 @@ public class InsertNumber extends Operator {
      * If the current value has been operated on before, pushes it to the stack.
      */
     @Override
-    void execute() {
+    public void execute() {
         // Handle the case when the calculator is in an error state.
         if (this.state.getStatus() == State.CalculatorState.ERROR) {
             // Override the existing error message with the new value entered.

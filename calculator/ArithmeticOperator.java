@@ -30,7 +30,7 @@ public abstract class ArithmeticOperator extends Operator {
      * Uses the first value on top of the stack and the current value to perform the operation and update the state.
      */
     @Override
-    void execute() {
+    public void execute() {
         if (this.state.getStatus().equals(State.CalculatorState.ERROR)) {
             // If the calculator is in an error state, do nothing.
             return;

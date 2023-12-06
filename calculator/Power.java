@@ -22,7 +22,7 @@ public class Power extends Operator {
      * Updates the current value and sets the calculator status to POST_OPERATION.
      */
     @Override
-    void execute() {
+    public void execute() {
         if (this.state.getStatus().equals(State.CalculatorState.ERROR)) {
             return;
         }

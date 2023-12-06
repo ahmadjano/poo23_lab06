@@ -20,7 +20,7 @@ public class Submit extends Operator {
      * It pushes the current value to the stack, resets the current value, and updates the calculator state.
      */
     @Override
-    void execute() {
+    public void execute() {
         if (this.state.getStatus().equals(State.CalculatorState.ERROR)) {
             return;
         }

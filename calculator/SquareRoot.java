@@ -19,7 +19,7 @@ public class SquareRoot extends Operator {
      * If the current value is negative, it sets the calculator's state to an error.
      */
     @Override
-    void execute() {
+    public void execute() {
         if (this.state.getStatus().equals(State.CalculatorState.ERROR)) {
             // If the calculator is already in an error state, return.
             return;
