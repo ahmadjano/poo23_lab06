@@ -14,17 +14,17 @@ Ce rapport présente notre projet de calculatrice en Java. L'objectif principal 
 
 Le diagramme de classes UML ci-dessous illustre la structure des classes dans notre projet Calculatrice, offrant une vue claire sur les relations entre celles-ci.
 
-![](Labo-5-Matrix.png)
+![](uml.png)
 
 ### Fonctionalités
 
-#### Classe `Matrix`
+#### Classe `Jcalculatrice`
 
 La classe principale, Matrix, offre deux constructeurs permettant de créer des matrices avec des spécifications particulières. La première prend des lignes spécifiées en argument, tandis que la seconde génère une matrice aléatoire en fonction du nombre de colonnes et de lignes souhaité.
 
 La classe Matrix propose des méthodes pour effectuer les opérations matricielles de base telles que l'addition, la soustraction et la multiplication. Ces opérations sont effectuées en tenant compte d'un modulo spécifié, assurant la cohérence des résultats.
 
-#### Interface `Operable`
+#### Interface `Operator`
 
 L'interface `Operable` joue un rôle central dans notre conception, permettant d'abstraire les opérations matricielles. Cette interface définit une méthode `int perform(int v1, int v2)` qui prend deux valeurs en paramètres et retourne le résultat de l'opération appliquée à ces valeurs.
 
