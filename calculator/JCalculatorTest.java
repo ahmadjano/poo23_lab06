@@ -116,6 +116,14 @@ public class JCalculatorTest {
     }
 
     @Test
+    public void squareRootNegativeTest() {
+        new InsertNumber(state, -1).execute();
+        new SquareRoot(state).execute();
+
+        assertEquals("Negative numbers with square roots are not allowed", state.getCurrentValue());
+    }
+
+    @Test
     public void reciprocalTest() {
         new InsertNumber(state, 2).execute();
         new Reciprocal(state).execute();
