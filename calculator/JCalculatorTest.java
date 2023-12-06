@@ -130,4 +130,12 @@ public class JCalculatorTest {
 
         assertEquals("0.5", state.getCurrentValue());
     }
+
+    @Test
+    public void reciprocalZeroTest() {
+        new InsertNumber(state, 0).execute();
+        new Reciprocal(state).execute();
+
+        assertEquals("Division by zero is not allowed", state.getCurrentValue());
+    }
 }

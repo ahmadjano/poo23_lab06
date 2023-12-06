@@ -119,5 +119,20 @@ public class CalculatorTest {
         assertEquals("[-1]", calculator.state.getStack().toString());
     }
 
+    @Test
+    public void reciprocalTest() {
+        calculator.submitValue("2");
+        calculator.executeOperation("reciprocal");
+
+        assertEquals("[0.5]", calculator.state.getStack().toString());
+    }
+
+    @Test
+    public void reciprocalZeroTest() {
+        calculator.submitValue("0");
+
+        assertThrows(IllegalArgumentException.class, () -> calculator.executeOperation("reciprocal"));
+    }
+
 
 }

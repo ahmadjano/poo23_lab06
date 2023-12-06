@@ -99,7 +99,7 @@ public class Calculator {
                 state.pushToStack();
             }
         } else {
-            throw new IllegalArgumentException("Invalid operator");
+            throw new IllegalArgumentException("Invalid operator: " + input);
         }
     }
 }
