@@ -59,7 +59,7 @@ public class Calculator {
                     executeOperation(input);
                     System.out.println(state.getStack());
                 } catch (IllegalArgumentException ex) {
-                    System.out.println("Error: Invalid operator.");
+                    System.out.println(ex.getMessage());
                 }
             }
 
@@ -72,6 +72,7 @@ public class Calculator {
      * @param input - User input value.
      */
     protected void submitValue(String input) {
+        state.updateStatus(State.CalculatorState.INPUT);
         this.state.setCurrentValue(input);
         this.state.pushToStack();
     }
@@ -84,8 +85,17 @@ public class Calculator {
      */
     protected void executeOperation(String input) throws IllegalArgumentException {
         if (operators.containsKey(input)) {
-            state.popFromStack();
+            String value = state.popFromStack();
             operators.get(input).execute();
+
+            if (state.getStatus() == State.CalculatorState.ERROR) {
+                String errorMessage = state.getCurrentValue();
+                // Undo the pop.
+                state.setCurrentValue(value);
+                state.pushToStack();
+                throw new IllegalArgumentException(errorMessage);
+            }
+
             if (!input.equals("clear")) {
                 state.pushToStack();
             }

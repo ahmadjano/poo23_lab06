@@ -25,7 +25,10 @@ public class Reciprocal extends Operator {
         }
 
         double number = this.state.getCurrentValueAsDouble();
-        if (number != 0.0) {
+        if (number == 0.0) {
+            this.state.updateStatus(State.CalculatorState.ERROR);
+            this.state.setCurrentValue("Division by zero is not allowed");
+        } else {
             number = 1 / number;
             this.state.setCurrentValueFromDouble(number);
             this.state.updateStatus(State.CalculatorState.POST_OPERATION);

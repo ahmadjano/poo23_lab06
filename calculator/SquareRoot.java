@@ -29,7 +29,7 @@ public class SquareRoot extends Operator {
         if (number < 0) {
             // If the current value is negative, set the calculator's state to an error.
             this.state.updateStatus(State.CalculatorState.ERROR);
-            this.state.setCurrentValue("Invalid input for square root");
+            this.state.setCurrentValue("Negative numbers with square roots are not allowed");
         } else {
             // Perform the square root operation for non-negative values.
             number = Math.sqrt(number);
