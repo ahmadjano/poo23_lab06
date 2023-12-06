@@ -72,6 +72,7 @@ public class Calculator {
      * @param input - User input value.
      */
     protected void submitValue(String input) {
+        state.updateStatus(State.CalculatorState.INPUT);
         this.state.setCurrentValue(input);
         this.state.pushToStack();
     }
