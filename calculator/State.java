@@ -10,7 +10,7 @@ public class State {
     private String storedValue = null;
     private Stack<String> stack = new Stack<>(); // stack of all values
 
-    private CalculatorState status = CalculatorState.INPUT;
+    private CalculatorState status = CalculatorState.EMPTY;
 
     /**
      * Store the current value
@@ -136,8 +136,9 @@ public class State {
     }
 
     public enum CalculatorState {
+        EMPTY,
+        INPUT,    // Input mode for entering numbers
         POST_OPERATION,
         ERROR,    // Error state
-        INPUT,    // Input mode for entering numbers
     }
 }

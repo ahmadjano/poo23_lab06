@@ -38,6 +38,9 @@ public abstract class ArithmeticOperator extends Operator{
                 this.state.setCurrentValueFromDouble(performOperation(n1, n2));
             } catch (ArithmeticException e) {
                 this.state.updateStatus(State.CalculatorState.ERROR);
+                // Undo the pop.
+                state.setCurrentValueFromDouble(n1);
+                this.state.pushToStack();
                 state.setCurrentValue(e.getMessage());
                 return;
             }

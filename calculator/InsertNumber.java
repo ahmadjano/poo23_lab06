@@ -22,22 +22,24 @@ public class InsertNumber extends Operator{
      */
     @Override
     void execute() {
-        if (this.state.getStatus().equals(State.CalculatorState.ERROR)) {
+        if (this.state.getStatus() == State.CalculatorState.ERROR) {
+            // Override the existing error with new value entered.
             this.state.updateStatus(State.CalculatorState.INPUT);
             this.state.setCurrentValue(value);
             return;
         }
 
-        if (this.state.getStatus().equals(State.CalculatorState.POST_OPERATION)) {
+        if (this.state.getStatus() == State.CalculatorState.POST_OPERATION) {
             this.state.updateStatus(State.CalculatorState.INPUT);
             this.state.pushToStack();
             this.state.resetCurrentValue();
         }
         if (this.state.isEmpty()) {
             this.state.setCurrentValue(value);
-            return;
+        } else {
+            this.state.setCurrentValue(this.state.getCurrentValue() + value);
         }
-        this.state.setCurrentValue(this.state.getCurrentValue() + value);
+
 
     }
 }
