@@ -1,14 +1,15 @@
 package calculator;
 
 /**
- * Power class
+ * Power class represents an operator that applies exponentiation to the current value.
  */
-public class Power extends Operator{
+public class Power extends Operator {
     private final int exponent;
 
     /**
-     * Power constructor
-     * @param state - State
+     * Power constructor initializes the Power operator with the calculator's state and exponent.
+     *
+     * @param state    - State
      * @param exponent - Exponent for the power
      */
     public Power(State state, int exponent) {
@@ -17,16 +18,19 @@ public class Power extends Operator{
     }
 
     /**
-     * Execute method
-     * Applies power to the current value
+     * Execute method applies the power operation to the current value.
+     * Updates the current value and sets the calculator status to POST_OPERATION.
      */
     @Override
     public void execute() {
-        if (!this.state.getStatus().equals(State.CalculatorState.ERROR)) {
-            double number = this.state.getCurrentValueAsDouble();
-            number = Math.pow(number, this.exponent);
-            this.state.setCurrentValueFromDouble(number);
-            this.state.updateStatus(State.CalculatorState.POST_OPERATION);
+        if (this.state.getStatus().equals(State.CalculatorState.ERROR)) {
+            return;
         }
+
+        double number = this.state.getCurrentValueAsDouble();
+        number = Math.pow(number, this.exponent);
+        this.state.setCurrentValueFromDouble(number);
+        this.state.updateStatus(State.CalculatorState.POST_OPERATION);
+
     }
 }

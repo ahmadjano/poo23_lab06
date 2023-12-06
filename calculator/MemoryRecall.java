@@ -1,13 +1,13 @@
 package calculator;
 
 /**
- * MemoryRecall class
- * Recalls the storedValue in the state
+ * MemoryRecall class represents an operator that recalls the stored value in the calculator's state.
  */
-public class MemoryRecall extends Operator{
+public class MemoryRecall extends Operator {
 
     /**
-     * MemoryCall constructor
+     * MemoryRecall constructor initializes the MemoryRecall operator with the calculator's state.
+     *
      * @param state - State
      */
     public MemoryRecall(State state) {
@@ -15,13 +15,14 @@ public class MemoryRecall extends Operator{
     }
 
     /**
-     * Execute method
-     * Recalls stored value
+     * Execute method recalls the stored value from the state if the calculator is not in an error state.
      */
     @Override
     public void execute() {
-        if (!this.state.getStatus().equals(State.CalculatorState.ERROR)) {
-            this.state.recallValue();
+        if (this.state.getStatus().equals(State.CalculatorState.ERROR)) {
+            return;
         }
+
+        this.state.recallValue();
     }
 }

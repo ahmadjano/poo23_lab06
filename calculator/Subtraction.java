@@ -1,12 +1,14 @@
 package calculator;
 
 /**
- * Subtraction class
+ * Subtraction class represents the subtraction operation in the calculator.
+ * It subtracts the second number from the first.
  */
-public class Subtraction extends ArithmeticOperator{
+public class Subtraction extends ArithmeticOperator {
 
     /**
-     * Subtraction constructor
+     * Subtraction constructor.
+     *
      * @param state - State
      */
     public Subtraction(State state) {
@@ -14,7 +16,8 @@ public class Subtraction extends ArithmeticOperator{
     }
 
     /**
-     * Subtracts the second number to the first
+     * Perform subtraction operation.
+     *
      * @param d1 - first double
      * @param d2 - second double
      * @return double - result of subtraction
@@ -23,5 +26,4 @@ public class Subtraction extends ArithmeticOperator{
     protected Double performOperation(double d1, double d2) {
         return d1 - d2;
     }
-
 }
