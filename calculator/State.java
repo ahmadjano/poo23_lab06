@@ -2,7 +2,8 @@ package calculator;
 import util.Stack;
 
 /**
- * State Class
+ * State Class represents the internal state of the calculator, including the current value, stored value, and stack.
+ * It also defines methods to perform operations on the state.
  */
 public class State {
     private static final String DEFAULT_VALUE = "0";
@@ -13,25 +14,25 @@ public class State {
     private CalculatorState status = CalculatorState.EMPTY;
 
     /**
-     * Store the current value
-     * Then reset it
+     * Store the current value and then reset it.
      */
-    public void storeValue(){
+    public void storeValue() {
         this.storedValue = this.currentValue;
         this.resetCurrentValue();
     }
 
     /**
-     * Recall the stored value and replace the current one by it
+     * Recall the stored value and replace the current one with it.
      */
-    public void recallValue(){
-        if (this.storedValue != null){
+    public void recallValue() {
+        if (this.storedValue != null) {
             this.currentValue = this.storedValue;
         }
     }
 
     /**
-     * Returns the current value as String
+     * Returns the current value as a String.
+     *
      * @return String - current value
      */
     public String getCurrentValue() {
@@ -39,7 +40,8 @@ public class State {
     }
 
     /**
-     * Get current value as double
+     * Get the current value as a double.
+     *
      * @return Double - current value as double
      */
     public Double getCurrentValueAsDouble() {
@@ -47,15 +49,17 @@ public class State {
     }
 
     /**
-     * Set the current value
-     * @param value - value to bet set as current
+     * Set the current value.
+     *
+     * @param value - value to be set as current
      */
     public void setCurrentValue(String value) {
         this.currentValue = value;
     }
 
     /**
-     * Set the current value from a double
+     * Set the current value from a double.
+     *
      * @param value - value to be set as current in double
      */
     public void setCurrentValueFromDouble(double value) {
@@ -66,45 +70,49 @@ public class State {
     }
 
     /**
-     * Reset current value to default
+     * Reset the current value to default.
      */
-    public void resetCurrentValue(){
+    public void resetCurrentValue() {
         this.currentValue = DEFAULT_VALUE;
     }
 
     /**
-     * Update the status
+     * Update the status.
+     *
      * @param status - Status to be set
      */
-    public void updateStatus(CalculatorState status){
+    public void updateStatus(CalculatorState status) {
         this.status = status;
     }
 
     /**
-     * Returns the current status
+     * Returns the current status.
+     *
      * @return CalculatorState
      */
-    public CalculatorState getStatus(){
+    public CalculatorState getStatus() {
         return this.status;
     }
 
     /**
-     * Pushes current value to stack then reset it
+     * Push the current value to the stack and then reset it.
      */
-    public void pushToStack(){
+    public void pushToStack() {
         this.stack.push(currentValue);
     }
 
     /**
-     * Pops the top value from stack and return it
+     * Pop the top value from the stack and return it.
+     *
      * @return String - value
      */
-    public String popFromStack(){
+    public String popFromStack() {
         return this.stack.pop();
     }
 
     /**
-     * Returns the stack
+     * Returns the stack.
+     *
      * @return Stack<String>
      */
     public Stack<String> getStack() {
@@ -112,7 +120,8 @@ public class State {
     }
 
     /**
-     * Returns the stack as array
+     * Returns the stack as an array.
+     *
      * @return String[]
      */
     public String[] toArray() {
@@ -120,21 +129,26 @@ public class State {
     }
 
     /**
-     * Set a new stack
+     * Set a new stack.
+     *
      * @param stack - Stack
      */
-    public void setStack(Stack<String> stack){
+    public void setStack(Stack<String> stack) {
         this.stack = stack;
     }
 
     /**
-     * Check if currentValue is empty
+     * Check if the currentValue is empty.
+     *
      * @return boolean
      */
     public boolean isEmpty() {
         return this.currentValue.equals(DEFAULT_VALUE);
     }
 
+    /**
+     * Enumeration representing the possible states of the calculator.
+     */
     public enum CalculatorState {
         EMPTY,
         INPUT,    // Input mode for entering numbers

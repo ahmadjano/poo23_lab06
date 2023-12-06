@@ -1,12 +1,13 @@
 package calculator;
 
 /**
- * ClearError class
+ * ClearError class represents an operator that clears errors in the calculator's state.
  */
 public class ClearError extends Operator {
 
     /**
-     * ClearError constructor
+     * ClearError constructor initializes the ClearError operator with the calculator's state.
+     *
      * @param state - State
      */
     public ClearError(State state) {
@@ -14,12 +15,12 @@ public class ClearError extends Operator {
     }
 
     /**
-     * Execute method
-     * Reset the current value and removes errors
+     * Execute method resets the current value and removes errors from the calculator's state.
+     * It updates the status to INPUT and removes any errors that may be present.
      */
     @Override
     void execute() {
         this.state.resetCurrentValue();
-        // remove errors
+        this.state.updateStatus(State.CalculatorState.INPUT);
     }
 }

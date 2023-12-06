@@ -1,11 +1,13 @@
 package calculator;
 
 /**
- * Division Class
+ * Division class represents an arithmetic operator that performs division between two numbers.
  */
-public class Division extends ArithmeticOperator{
+public class Division extends ArithmeticOperator {
+
     /**
-     * Division constructor
+     * Division constructor initializes the Division operator with the calculator's state.
+     *
      * @param state - State
      */
     public Division(State state) {
@@ -13,14 +15,16 @@ public class Division extends ArithmeticOperator{
     }
 
     /**
-     * divides the first double by the 2nd
-     * @param d1 - first double
-     * @param d2 - second double
-     * @return double - result of operation
+     * Performs division operation on two doubles.
+     *
+     * @param d1 - the first double
+     * @param d2 - the second double (divisor)
+     * @return double - result of the division operation
+     * @throws ArithmeticException if attempting to divide by zero
      */
     @Override
     protected Double performOperation(double d1, double d2) throws ArithmeticException {
-        if (d2 == 0.0){
+        if (d2 == 0.0) {
             throw new ArithmeticException("Division by zero is not allowed");
         }
         return d1 / d2;

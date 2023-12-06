@@ -1,13 +1,13 @@
 package calculator;
 
 /**
- * MemoryStore class
- * Store currentValue
+ * MemoryStore class represents an operator that stores the current value in the calculator's state.
  */
-public class MemoryStore extends Operator{
+public class MemoryStore extends Operator {
 
     /**
-     * MemoryStore constructor
+     * MemoryStore constructor initializes the MemoryStore operator with the calculator's state.
+     *
      * @param state - State
      */
     public MemoryStore(State state) {
@@ -15,13 +15,14 @@ public class MemoryStore extends Operator{
     }
 
     /**
-     * Execute method
-     * Store the currentValue in the state
+     * Execute method stores the current value in the state if the calculator is not in an error state.
      */
     @Override
     void execute() {
-        if (!this.state.getStatus().equals(State.CalculatorState.ERROR)) {
-            this.state.storeValue();
+        if (this.state.getStatus().equals(State.CalculatorState.ERROR)) {
+            return;
         }
+
+        this.state.storeValue();
     }
 }

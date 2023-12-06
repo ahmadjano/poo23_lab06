@@ -13,8 +13,6 @@ import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
-//import java.awt.event.*;
-
 public class JCalculator extends JFrame {
     // Tableau representant une pile vide
     private static final String[] empty = {"< empty stack >"};

@@ -1,16 +1,22 @@
 package calculator;
 
-import javax.naming.OperationNotSupportedException;
 import java.util.*;
 
+/**
+ * Calculator class represents a simple CLI calculator with basic arithmetic operations.
+ */
 public class Calculator {
     protected final State state;
     private final Map<String, Operator> operators;
 
+    /**
+     * Calculator constructor initializes the calculator with default operators.
+     */
     public Calculator() {
         this.state = new State();
         this.operators = new HashMap<>();
 
+        // Initialize supported operators
         this.operators.put("+", new Addition(state));
         this.operators.put("-", new Subtraction(state));
         this.operators.put("/", new Division(state));
@@ -21,12 +27,16 @@ public class Calculator {
         this.operators.put("clear", new Clear(state));
     }
 
+    /**
+     * Run method starts the calculator's interactive session.
+     * It takes user input for numbers and operators until the user types 'exit'.
+     */
     public void Run() {
         List<String> operatorsList = new ArrayList<>(operators.keySet());
         Collections.sort(operatorsList);
 
         System.out.println("Type 'exit' to close the calculator.");
-        System.out.format("Valid operators: %s\n", String.join(", " , String.join(", ", operatorsList)));
+        System.out.format("Valid operators: %s\n", String.join(", ", operatorsList));
 
         Scanner scanner = new Scanner(System.in);
         String input;
@@ -35,7 +45,7 @@ public class Calculator {
             System.out.print("> ");
             input = scanner.next();
 
-            if (input.equals("exit")){
+            if (input.equals("exit")) {
                 break;
             }
 
@@ -53,24 +63,34 @@ public class Calculator {
                 }
             }
 
-        } while(true);
+        } while (true);
     }
 
+    /**
+     * Submit value to the calculator.
+     *
+     * @param input - User input value.
+     */
     protected void submitValue(String input) {
         this.state.setCurrentValue(input);
         this.state.pushToStack();
     }
 
+    /**
+     * Execute operation based on user input.
+     *
+     * @param input - User input operator.
+     * @throws IllegalArgumentException if the input operator is invalid.
+     */
     protected void executeOperation(String input) throws IllegalArgumentException {
         if (operators.containsKey(input)) {
             state.popFromStack();
             operators.get(input).execute();
-            if (!input.equals("clear")){
+            if (!input.equals("clear")) {
                 state.pushToStack();
             }
         } else {
             throw new IllegalArgumentException("Invalid operator: " + input);
         }
-
     }
 }

@@ -1,12 +1,14 @@
 package calculator;
 
 /**
- * Submit class
+ * Submit class represents the submit operation in the calculator.
+ * It pushes the current value to the stack, resets the current value, and updates the calculator state.
  */
 public class Submit extends Operator {
 
     /**
-     * Submit constructor
+     * Submit constructor.
+     *
      * @param state - State
      */
     public Submit(State state) {
@@ -14,15 +16,17 @@ public class Submit extends Operator {
     }
 
     /**
-     * Execute method
-     * push the currentvalue to the stack
+     * Execute method performs the submit operation.
+     * It pushes the current value to the stack, resets the current value, and updates the calculator state.
      */
     @Override
     void execute() {
-        if (!this.state.getStatus().equals(State.CalculatorState.ERROR)) {
-            this.state.pushToStack();
-            this.state.resetCurrentValue();
-            this.state.updateStatus(State.CalculatorState.INPUT);
+        if (this.state.getStatus().equals(State.CalculatorState.ERROR)) {
+            return;
         }
+
+        this.state.pushToStack();
+        this.state.resetCurrentValue();
+        this.state.updateStatus(State.CalculatorState.INPUT);
     }
 }
