@@ -18,7 +18,7 @@ public class Submit extends Operator {
      * push the currentvalue to the stack
      */
     @Override
-    void execute() {
+    public void execute() {
         if (!this.state.getStatus().equals(State.CalculatorState.ERROR)) {
             this.state.pushToStack();
             this.state.resetCurrentValue();

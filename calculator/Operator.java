@@ -19,5 +19,5 @@ public abstract class Operator {
     /**
      * Execute method to use the operator
      */
-    abstract void execute();
+    public abstract void execute();
 }

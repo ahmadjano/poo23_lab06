@@ -19,7 +19,7 @@ public class SignSwitch extends Operator{
      * Switches the sign of the current state value.
      */
     @Override
-    void execute() {
+    public void execute() {
         if (!this.state.getStatus().equals(State.CalculatorState.ERROR)) {
             String currentValue = this.state.getCurrentValue();
             if (currentValue.startsWith("-")) {

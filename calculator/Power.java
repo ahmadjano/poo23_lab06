@@ -21,7 +21,7 @@ public class Power extends Operator{
      * Applies power to the current value
      */
     @Override
-    void execute() {
+    public void execute() {
         if (!this.state.getStatus().equals(State.CalculatorState.ERROR)) {
             double number = this.state.getCurrentValueAsDouble();
             number = Math.pow(number, this.exponent);

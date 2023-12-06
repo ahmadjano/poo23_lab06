@@ -18,7 +18,7 @@ public class ClearError extends Operator {
      * Reset the current value and removes errors
      */
     @Override
-    void execute() {
+    public void execute() {
         this.state.resetCurrentValue();
         // remove errors
     }
