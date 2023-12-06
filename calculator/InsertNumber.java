@@ -4,7 +4,7 @@ package calculator;
  * InsertNumber class
  */
 public class InsertNumber extends Operator{
-    int value;
+    private final String value;
 
     /**
      * @param state - State
@@ -12,7 +12,7 @@ public class InsertNumber extends Operator{
      */
     public InsertNumber(State state, int value) {
         super(state);
-        this.value = value;
+        this.value = Integer.toString(value);
     }
 
     /**
@@ -22,18 +22,22 @@ public class InsertNumber extends Operator{
      */
     @Override
     void execute() {
-        if (!this.state.getStatus().equals(State.CalculatorState.ERROR)) {
-            if (this.state.getStatus().equals(State.CalculatorState.POST_OPERATION)) {
-                this.state.updateStatus(State.CalculatorState.INPUT);
-                this.state.pushToStack();
-                this.state.resetCurrentValue();
-            }
-            String strValue = Integer.toString(value);
-            if (this.state.isEmpty()) {
-                this.state.setCurrentValue(strValue);
-                return;
-            }
-            this.state.setCurrentValue(this.state.getCurrentValue() + strValue);
+        if (this.state.getStatus().equals(State.CalculatorState.ERROR)) {
+            this.state.updateStatus(State.CalculatorState.INPUT);
+            this.state.setCurrentValue(value);
+            return;
         }
+
+        if (this.state.getStatus().equals(State.CalculatorState.POST_OPERATION)) {
+            this.state.updateStatus(State.CalculatorState.INPUT);
+            this.state.pushToStack();
+            this.state.resetCurrentValue();
+        }
+        if (this.state.isEmpty()) {
+            this.state.setCurrentValue(value);
+            return;
+        }
+        this.state.setCurrentValue(this.state.getCurrentValue() + value);
+
     }
 }

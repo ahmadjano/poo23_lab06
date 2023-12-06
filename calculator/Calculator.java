@@ -1,9 +1,10 @@
 package calculator;
 
+import javax.naming.OperationNotSupportedException;
 import java.util.*;
 
 public class Calculator {
-    private final State state;
+    protected final State state;
     private final Map<String, Operator> operators;
 
     public Calculator() {
@@ -40,24 +41,36 @@ public class Calculator {
 
             try {
                 Double.parseDouble(input);
-                state.setCurrentValue(input);
-                state.pushToStack();
+                submitValue(input);
                 System.out.println(state.getStack());
-                this.state.updateStatus(State.CalculatorState.INPUT);
             } catch (NumberFormatException e) {
                 // Assume it's an operator if we can't parse the input to a double.
-                if (operators.containsKey(input)) {
-                    state.popFromStack();
-                    operators.get(input).execute();
-                    if (!input.equals("clear")){
-                        state.pushToStack();
-                    }
+                try {
+                    executeOperation(input);
                     System.out.println(state.getStack());
-                } else {
+                } catch (IllegalArgumentException ex) {
                     System.out.println("Error: Invalid operator.");
                 }
             }
 
         } while(true);
+    }
+
+    protected void submitValue(String input) {
+        this.state.setCurrentValue(input);
+        this.state.pushToStack();
+    }
+
+    protected void executeOperation(String input) throws IllegalArgumentException {
+        if (operators.containsKey(input)) {
+            state.popFromStack();
+            operators.get(input).execute();
+            if (!input.equals("clear")){
+                state.pushToStack();
+            }
+        } else {
+            throw new IllegalArgumentException("Invalid operator: " + input);
+        }
+
     }
 }

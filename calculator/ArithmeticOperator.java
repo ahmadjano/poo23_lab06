@@ -20,7 +20,7 @@ public abstract class ArithmeticOperator extends Operator{
      * @param d2 - second double
      * @return result of operation
      */
-    protected abstract Double performOperation(double d1, double d2);
+    protected abstract Double performOperation(double d1, double d2) throws ArithmeticException;
 
     /**
      * Execute method
@@ -34,7 +34,13 @@ public abstract class ArithmeticOperator extends Operator{
 
             // from current value
             double n2 = this.state.getCurrentValueAsDouble();
-            this.state.setCurrentValueFromDouble(performOperation(n1, n2));
+            try {
+                this.state.setCurrentValueFromDouble(performOperation(n1, n2));
+            } catch (ArithmeticException e) {
+                this.state.updateStatus(State.CalculatorState.ERROR);
+                state.setCurrentValue(e.getMessage());
+                return;
+            }
             this.state.updateStatus(State.CalculatorState.POST_OPERATION);
         }
     }

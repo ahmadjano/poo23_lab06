@@ -10,12 +10,12 @@ public class JCalculatorTest {
     private State state;
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
         state = new State();
     }
 
     @Test
-    void additionDecimalTest() {
+    public void additionDecimalTest() {
         new InsertNumber(state, 3).execute();
         new Decimal(state).execute();
         new InsertNumber(state, 5).execute();
@@ -28,7 +28,7 @@ public class JCalculatorTest {
     }
 
     @Test
-    void subtractionOneInsertionTest() {
+    public void subtractionOneInsertionTest() {
         new InsertNumber(state, 8).execute();
         new Submit(state).execute();
         new Subtraction(state).execute();
@@ -37,7 +37,7 @@ public class JCalculatorTest {
     }
 
     @Test
-    void subtractionNegativeTest() {
+    public void subtractionNegativeTest() {
         new InsertNumber(state, 2).execute();
         new Submit(state).execute();
         new InsertNumber(state, 5).execute();
@@ -47,7 +47,7 @@ public class JCalculatorTest {
     }
 
     @Test
-    void divisionDecimalTest() {
+    public void divisionDecimalTest() {
         // 7.5
         new InsertNumber(state, 7).execute();
         new Decimal(state).execute();
@@ -64,7 +64,7 @@ public class JCalculatorTest {
     }
 
     @Test
-    void divisionZeroTest() {
+    public void divisionZeroTest() {
         // 5
         new InsertNumber(state, 5).execute();
 
@@ -75,11 +75,11 @@ public class JCalculatorTest {
 
         new Division(state).execute();
 
-        assertEquals("Infinity", state.getCurrentValue());
+        assertEquals("Division by zero is not allowed", state.getCurrentValue());
     }
 
     @Test
-    void powerTest() {
+    public void powerTest() {
         new InsertNumber(state, 2).execute();
         new Power(state, 3).execute();
 
@@ -87,7 +87,7 @@ public class JCalculatorTest {
     }
 
     @Test
-    void squareRootTest() {
+    public void squareRootTest() {
         new InsertNumber(state, 9).execute();
         new SquareRoot(state).execute();
 
@@ -95,7 +95,7 @@ public class JCalculatorTest {
     }
 
     @Test
-    void reciprocalTest() {
+    public void reciprocalTest() {
         new InsertNumber(state, 2).execute();
         new Reciprocal(state).execute();
 

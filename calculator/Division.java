@@ -19,9 +19,9 @@ public class Division extends ArithmeticOperator{
      * @return double - result of operation
      */
     @Override
-    protected Double performOperation(double d1, double d2) {
+    protected Double performOperation(double d1, double d2) throws ArithmeticException {
         if (d2 == 0.0){
-            this.state.updateStatus(State.CalculatorState.ERROR);
+            throw new ArithmeticException("Division by zero is not allowed");
         }
         return d1 / d2;
     }
