@@ -111,5 +111,13 @@ public class CalculatorTest {
         assertEquals("[4, 2.5]", calculator.state.getStack().toString());
     }
 
+    @Test
+    public void sqrtNegativeTest() {
+        calculator.submitValue("-1");
+
+        assertThrows(IllegalArgumentException.class, () -> calculator.executeOperation("sqrt"));
+        assertEquals("[-1]", calculator.state.getStack().toString());
+    }
+
 
 }
