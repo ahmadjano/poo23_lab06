@@ -15,6 +15,27 @@ public class JCalculatorTest {
     }
 
     @Test
+    public void multipleDecimalTest() {
+        new InsertNumber(state, 1).execute();
+        new Decimal(state).execute();
+        new Decimal(state).execute();
+        new Decimal(state).execute();
+        new Decimal(state).execute();
+        new InsertNumber(state, 2).execute();
+
+        assertEquals("1.2", state.getCurrentValue());
+    }
+
+    @Test
+    public void missingOperandTest() {
+        new InsertNumber(state, 3).execute();
+
+        new Addition(state).execute();
+
+        assertEquals("Second operand missing", state.getCurrentValue());
+    }
+
+    @Test
     public void additionDecimalTest() {
         new InsertNumber(state, 3).execute();
         new Decimal(state).execute();

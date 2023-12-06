@@ -36,6 +36,12 @@ public abstract class ArithmeticOperator extends Operator {
             return;
         }
 
+        if (this.state.getStack().isEmpty()) {
+            this.state.updateStatus(State.CalculatorState.ERROR);
+            this.state.setCurrentValue("Second operand missing");
+            return;
+        }
+
         // Retrieve the first operand from the stack.
         double n1 = Double.parseDouble(this.state.popFromStack());
 
