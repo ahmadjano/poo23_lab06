@@ -19,7 +19,7 @@ public class Decimal extends Operator{
      * Appends a decimal point to the current state.
      */
     @Override
-    void execute() {
+    public void execute() {
         if (!this.state.getStatus().equals(State.CalculatorState.ERROR)) {
 
             if (this.state.getCurrentValue().contains(".")) {

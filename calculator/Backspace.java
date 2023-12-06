@@ -19,7 +19,7 @@ public class Backspace extends Operator{
      * Removes the last character from current value
      */
     @Override
-    void execute() {
+    public void execute() {
         if (!this.state.getStatus().equals(State.CalculatorState.ERROR)) {
             String currentValue = this.state.getCurrentValue();
             this.state.setCurrentValue(currentValue.substring(0, currentValue.length() - 1));

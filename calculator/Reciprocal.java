@@ -18,7 +18,7 @@ public class Reciprocal extends Operator{
      * Apply 1/x on the currentValue
      */
     @Override
-    void execute() {
+    public void execute() {
         if (!this.state.getStatus().equals(State.CalculatorState.ERROR)) {
             double number = this.state.getCurrentValueAsDouble();
             if (number != 0.0) {

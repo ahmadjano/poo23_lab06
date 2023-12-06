@@ -19,7 +19,7 @@ public class Clear extends ClearError {
      * Clears app and stack
      */
     @Override
-    void execute() {
+    public void execute() {
         super.execute();
         state.setStack(new Stack<>());
     }

@@ -27,7 +27,7 @@ public abstract class ArithmeticOperator extends Operator{
      * Uses the first value on top of the stack and the currentvalue to get a new value
      */
     @Override
-    void execute() {
+    public void execute() {
         if (!this.state.getStatus().equals(State.CalculatorState.ERROR)){
             // from stack
             double n1 = Double.parseDouble(this.state.popFromStack());

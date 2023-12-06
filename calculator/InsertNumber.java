@@ -21,7 +21,7 @@ public class InsertNumber extends Operator{
      * If the currentvalue has been operated on before, push it to the stack
      */
     @Override
-    void execute() {
+    public void execute() {
         if (!this.state.getStatus().equals(State.CalculatorState.ERROR)) {
             if (this.state.getStatus().equals(State.CalculatorState.POST_OPERATION)) {
                 this.state.updateStatus(State.CalculatorState.INPUT);

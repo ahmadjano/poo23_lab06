@@ -18,7 +18,7 @@ public class SquareRoot extends Operator {
      * Performs a square root operation on the currentValue.
      */
     @Override
-    void execute() {
+    public void execute() {
         if (!this.state.getStatus().equals(State.CalculatorState.ERROR)) {
             double number = this.state.getCurrentValueAsDouble();
             number = Math.sqrt(number);

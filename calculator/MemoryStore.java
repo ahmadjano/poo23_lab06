@@ -19,7 +19,7 @@ public class MemoryStore extends Operator{
      * Store the currentValue in the state
      */
     @Override
-    void execute() {
+    public void execute() {
         if (!this.state.getStatus().equals(State.CalculatorState.ERROR)) {
             this.state.storeValue();
         }

@@ -19,7 +19,7 @@ public class MemoryRecall extends Operator{
      * Recalls stored value
      */
     @Override
-    void execute() {
+    public void execute() {
         if (!this.state.getStatus().equals(State.CalculatorState.ERROR)) {
             this.state.recallValue();
         }
